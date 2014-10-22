@@ -1,0 +1,24 @@
+[user]
+name = Kaustubh Priye 
+email = kaustubhonline15@gmail.com
+[color]
+ui = auto
+[alias]
+ci = commit
+co = checkout
+st = status
+ls = branch -a
+cp = cherry-pick
+  remove-deleted = !git ls-files -d | xargs git rm
+  add-untracked = !git ls-files -o --exclude-standard | xargs git add -v
+  add-remove = !git remove-deleted && git add-untracked
+  purge = !git clean -fdx
+  diff-one = for f in `git st | grep modified | awk '{print $3}'`; do git diff $f; read; clear; done
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+[core]
+editor = vim
+#editor=emacs
+[push]
+default = matching
+[branch]
+  autosetupmerge = true
